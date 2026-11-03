@@ -40,6 +40,9 @@ LLD (Low level design)
                 payment_processer.process_payment(upi_payment) #Passing the payment has an object
 
     L - Liskov Substitution Principle (LSP)
+        Defination:
+        Parent abstractions should be designed so that child classes can replace them without breaking expected behavior.
+        Explanation:
         A child that inherits the parent must not forcefully implement its method. A parent class to be designed specifically, or designed with minimum so that every child can implement without force
         Example:
             Bad:
@@ -79,4 +82,67 @@ LLD (Low level design)
                 fixed_deposit_account.deposit(100)
 
     I - Interface Segregation Principle (ISP)
+        Defination:
+        Build smaller, focused interfaces so that classes implement only the functionality they actually need.
+
+        Give methods to class that necessary to it
+        Example:
+            if i create a interface with Employee class with abstact methods work, eat
+            if i create robot concrete class based on employee, it should not implement eat
+            so create Workable interface that contains work abstract method, Eatable interface contains eat abstract method
+            if i create EmployeeConcreteClass inherit both Workable, Eatable class
+            if i create RobotConcreteClass inherit only workable class
+    
     D - Dependency Inversion Principle (DIP)
+        High level modules should not directly depend on low level modules. both should depend on abstractions.
+
+        Example:
+            Desgin a notification system to send notification through email, sms and whatsapp
+            Bad:
+                class EmailService:
+                    def send(self, message):
+                        print("message from email: message")
+                class SMSService:
+                    def send(self, message):
+                        print("message from sms: message)
+                
+                from .services import EmailService, SMSService
+                class Notification:
+                    def __init__(self):
+                        self.email_service = EmailService()
+                        self.sms_service = SMSService()
+                    def notifyByEmail(self, message):
+                        self.email_service.send(message)
+                    def notifyBySMS(self,message):
+                        self.sms_service.send(message)
+                
+                notify = Notification()
+                notify.notifyByEmail("hello") #message from email: hello
+            Good:
+                Instead of Notification service depending on the low level module it should depend on abstract/contract
+
+                class NotificationChannel(ABC):
+                    @abstractmethod
+                    def send(self, message):
+                        pass
+                class SMSService(NotificationChannel):
+                    def send(self, message):
+                        print("message from sms: message)
+                class EmailService(NotificationChannel):
+                    def send(self, message):
+                        print("message from email: message)
+                
+                class NotificationService:
+                    def __init__(self, notification_channel: NotificationChannel):
+                        self.notification_channel = notification_channel
+
+                    def notify(self, message):
+                        self.notification_channel.send(message)
+                
+                email_service = EmailService()
+                notification_service = NotificationService(email_service)
+                notification_service.notify("hello") #message from email: hello
+
+                
+                
+

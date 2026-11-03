@@ -143,6 +143,36 @@ LLD (Low level design)
                 notification_service = NotificationService(email_service)
                 notification_service.notify("hello") #message from email: hello
 
+## Design Patterns
+### Behavioural Design pattern
+    How objects talk to each other
+    How Objects should communicate with one another
+    how objects relate to each other and define communication rules that keeps code flexible and loosely connected
+    Coordination interactions between objects
+    Managing state transitions and communication efficiently
+
+    We mainly focus on interactions, state transitions and communication
+#### Memento pattern
+    undo/redo problem statement
+#### Observer pattern
+    wheather station gives temparature update, that has to notify different set of devices like tvs, mobile and other devices
+    Example:
+        1 workstation notifies all the devices but workstation need not to know each device how they work
+#### Strategy pattern
+    Imagine builiding a flipkart app and want to offer discounts
+    first time user: 100 ruppees off
+    Diwali sale: 20% on all products
+    Student offer: 15% on student ids
+
+    if i implement using normally i need to add multiple if statements if holi sale comes i need to modify the code that violates open/closed solid priciple rule
+
+    First i will create DiscountStrategy interface that contains abstract method apply
+    Student Concrete class inherits it and define apply method
+    Diwali Concrete class inherits it and define apply method
+
+    i will pass student object if i want student discount to discount service
+
+
                 
                 
 

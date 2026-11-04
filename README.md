@@ -144,6 +144,13 @@ LLD (Low level design)
                 notification_service.notify("hello") #message from email: hello
 
 ## Design Patterns
+    Total patterns are 22:
+    Important patterns also implement in python(9):
+        Strategy, Factory Method, Singleton, Observer, Decorator, Adapter, State, Command, Builder, Iterator
+    Medium important(5):
+        Facade, Proxy, Composite, Template Method, Chain of Responsibility
+    Low(7):
+        Abstract Factory, Bridge, Flyweight, Memento, Mediator, Prototype, Visitor, Interpreter
 ### Behavioural Design pattern
     How objects talk to each other
     How Objects should communicate with one another
@@ -171,6 +178,39 @@ LLD (Low level design)
     Diwali Concrete class inherits it and define apply method
 
     i will pass student object if i want student discount to discount service
+#### Command pattern
+    Waiter taking order and asking chef to cook food
+#### Template method Pattern
+    Image building system that reads files of different types like CSV, XML, and JSON. Every file reader needs to follow basic process: open, parse and close
+
+    but the open and close logic is same for all the file types, the only change in logic is parse.
+
+    Create a DataParser abstract class that contains open and close methods and make the parse method as the abstract method
+    The concrete class JSONParser must implement parse method
+    It will implement using 
+        def parse(): 
+            self.open() 
+            print("parsing json") 
+            self.close()
+    Note: we got open and close method since we have inherited the DataParser class
+#### Iterator Pattern
+    Imagine we are buliding a song playlist app, internally we might use set or list or trees, if we do our application as package then the client doesnot know how to iterate through playlist
+    so we create custom iterator and client only needs to know next, has_next methods to iter over playlist
+    Example: Collection framework follows this
+    Interview:
+        The Iterator Design Pattern provides a standard way to traverse elements of a collection without exposing its underlying representation.
+        The collection is responsible for storing elements, while the iterator maintains the traversal state and provides methods to access elements sequentially.
+        This allows clients to traverse different collection implementations through a common interface without depending on their internal data structures.
+#### State Design Pattern
+    Imagine iam building flipkart order system, where state of order placed or shipped or delivered, in this case i can use State Design
+
+    Create a OrderState interface contains confirm, ship, deliver abstract method,
+    Concrete class PlacedState, ConfirmState, ShipState, DeliveredState concrete classes implement them
+#### Mediator Design Pattern
+    Imagine buliding airport system, where multiple airplanes need to coordinate for landings and takeoffs. If each airplane communicate with another airplane it makes system complex
+#### Singleton Design Pattern
+    
+
 
 
                 

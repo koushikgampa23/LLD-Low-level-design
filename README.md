@@ -209,7 +209,31 @@ LLD (Low level design)
 #### Mediator Design Pattern
     Imagine buliding airport system, where multiple airplanes need to coordinate for landings and takeoffs. If each airplane communicate with another airplane it makes system complex
 #### Singleton Design Pattern
-    
+
+#### Factory Design pattern
+    Imagine running a restaurant, each food item is object, if we add new items to menu increases the adding code complexicity
+
+    The factory pattern moves all object creation logic into one central place - the factory class. Instead of creating all the objects directly through code, you hand over this responsibility to the factory, which decides which specific class to create based on request. This approach follows the open-closed principle by allowing you to add new food types without chaning any exisiting code - you only update the factory
+
+    Use cases:
+        Buliding apps based on os, factory gives objects if it windows, if it linux or mac
+        Database connections if postgres give postgres connector, mysql give that
+        File export tools when user wants to export document in different formates, like word or pdf the factory determines which file generator to generate the file
+
+#### Abstract Factory Design pattern
+    Imagine i wanted to create cusine for a restaurent, if choose one cusine it should contain starter, meal and dessert
+    if i choose that particular cusine i need to get everything of that particular cusine
+
+#### Builder desing pattern
+    When creating an object that requires many different settings - most of them are optional, the constructor becomes messy and confusing.
+    Problems:
+        how to remeber which are optional and which are required
+        long params in constructor
+    The builder designer pattern lets you construct complex objects step-by-step in a clear and readable way.
+
+    question:
+        Why are you returning self from setter methods?
+        To support method chaining (fluent interface), allowing multiple configuration methods to be called in a single statement.
 
 
 

@@ -235,8 +235,28 @@ LLD (Low level design)
         Why are you returning self from setter methods?
         To support method chaining (fluent interface), allowing multiple configuration methods to be called in a single statement.
 
+#### Adapter Design pattern
+    The adapter pattern is a design pattern that lets two systems or components that weren't designed to work together communicate with each other by creating a bridge between them
 
+    Imagine i have built a e-commerce application and send notifications to customers using EmailNotificationSystem that i have built
+    When i wanted to switch to the popular email service SendGrid, 
+    Your existing code expects one interface, but sendGrid expects a completely different interface. That dont match.
 
-                
+#### Decorator pattern
+    Imagine you have a coffee class, what if i wanted to create a coffee + milk, coffee+milk+cream, i need to add new features to the existing object
+    i need to create subclasses for varient, imagine i have 20 combination then i need to create 20 more classes
+    This is called explosion of subclasses
+
+#### Proxy pattern
+    Sometimes you dont want to give direct access to an object because of security concerns, performance concerns, or need to control how its accessed
+
+    The proxy pattern creates a standin object that sits between the client and real object. The proxy control and manages access to the real object.
+
+    Imagine iam building a photo gallery application that contains high resolution images, without proxy pattern the application will try to load every single image when the applicaiton opens, even if the user didnt even visit the image that loads
+    Time(slow startup), performance(loading unnecessary photos), processing power(wasting resource)
+
+    with proxy, the image is only loaded when user actually tries to view it. The proxy acts as a placeholder until the real image is needed
+
+                     
                 
 

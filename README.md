@@ -257,6 +257,16 @@ LLD (Low level design)
 
     with proxy, the image is only loaded when user actually tries to view it. The proxy acts as a placeholder until the real image is needed
 
+#### Composite Design pattern
+    Imagine buliding a system like file explorer, it becomes tricky to manage them because:
+        Some are files and some are folders that contains files and folders
+
+    Treating files and folders differently everywhere in the code gets messy and complicated.
+
+    Even files, folders contains get_details, get_size, move 
+
+    Composite pattern tells handle both files and folders as same
+
                      
-                
+    
 
